@@ -31,6 +31,8 @@ function makeGraph(title){
 	}
     });
     $(".highcharts-container text:contains('Highcharts')").remove();
+    $('#saveGraphButton').removeAttr("disabled");
+    $('#timeRangeSelect').removeAttr("disabled");
 }
 
 function checkForUpdate()  {

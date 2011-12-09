@@ -91,13 +91,15 @@ function addItem(id, minTime) {
 		$('#saveGraphButton').html('Save');
 	    }
         $('#saveGraphButton').removeClass("hidden");
-        $('#timeRangeSelect').removeClass("hidden");
+        //$('#timeRangeSelect').removeClass("hidden");
+        $('#timeRangeSelect_chzn').removeClass("hidden");
 	}
     });
     $('#graph').html('<img src="img/loader.gif">');
     graph=null;
     $('#saveGraphButton').addClass("hidden");
-    $('#timeRangeSelect').addClass("hidden");
+    //$('#timeRangeSelect').addClass("hidden");
+    $('#timeRangeSelect_chzn').addClass("hidden");
 }
 
 function getSavedGraphs() {
@@ -158,8 +160,8 @@ function loadGraphMode() {
 	//$('#main-container').html(result);
 	makeGraph(null);
 	$('.chzn-select').chosen();
-	$('#removeItemSelect_chzn').css('width','148px').children('.chzn-drop').css('width','146px');
-	$('#timeRangeSelect_chzn').css('width','88px').children('.chzn-drop').css('width','86px');
+    //$('#timeRangeSelect_chzn').addClass("hidden");
+	$('#timeRangeSelect_chzn').addClass("hidden").css('width','88px').children('.chzn-drop').css('width','86px');
 	$('.itemSearch').autocomplete({
 	    source: 'ajax/itemsearch.ajax.php',
 	    minLength: 2,

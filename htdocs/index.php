@@ -77,7 +77,7 @@ require_once "inc/functions.inc.php";
     </div>
 
     <script>
-	window._gaq = [['_setAccount','UA-25357406-1'],['_trackPageview'],['_trackPageLoadTime']];
+	window._gaq = [['_setAccount',<?php echo "'$analytics_id'"; ?>],['_trackPageview'],['_trackPageLoadTime']];
 	Modernizr.load({
 	    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
 	});

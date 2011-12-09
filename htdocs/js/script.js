@@ -31,8 +31,6 @@ function makeGraph(title){
 	}
     });
     $(".highcharts-container text:contains('Highcharts')").remove();
-    $('#saveGraphButton').removeAttr("disabled");
-    $('#timeRangeSelect').removeAttr("disabled");
 }
 
 function checkForUpdate()  {
@@ -92,10 +90,14 @@ function addItem(id, minTime) {
 	    } else {
 		$('#saveGraphButton').html('Save');
 	    }
+        $('#saveGraphButton').removeAttr("disabled");
+        $('#timeRangeSelect').removeAttr("disabled");
 	}
     });
     $('#graph').html('<img src="img/loader.gif">');
     graph=null;
+    $('#saveGraphButton').attr("disabled", "disabled");
+    $('#timeRangeSelect').attr("disabled", "disabled");
 }
 
 function getSavedGraphs() {

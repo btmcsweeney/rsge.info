@@ -90,14 +90,14 @@ function addItem(id, minTime) {
 	    } else {
 		$('#saveGraphButton').html('Save');
 	    }
-        $('#saveGraphButton').removeAttr("disabled");
-        $('#timeRangeSelect').removeAttr("disabled");
+        $('#saveGraphButton').removeClass("hidden");
+        $('#timeRangeSelect').removeClass("hidden");
 	}
     });
     $('#graph').html('<img src="img/loader.gif">');
     graph=null;
-    $('#saveGraphButton').attr("disabled", "disabled");
-    $('#timeRangeSelect').attr("disabled", "disabled");
+    $('#saveGraphButton').addClass("hidden");
+    $('#timeRangeSelect').addClass("hidden");
 }
 
 function getSavedGraphs() {

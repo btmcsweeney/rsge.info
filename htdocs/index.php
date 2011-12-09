@@ -57,7 +57,7 @@ require_once "inc/functions.inc.php";
 	<h1>RSGE.info</h1>
     </header>
     <nav>
-	<span id="update-times"><?php //echo last_update(); ?></span>
+	<span id="update-times"><?php echo "The GE last updated on "; ?></span>
     </nav>
     
     <aside>

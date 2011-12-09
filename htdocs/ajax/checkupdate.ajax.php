@@ -10,7 +10,6 @@ require_once "../inc/functions.inc.php";
 $cursor = $miscColl->find(array('name'=>"updateText"));
 $cursor->sort(array('time'=> -1));
 $lastUpdate=$cursor->getNext();
-var_dump($lastUpdate);
 $time=$lastUpdate['time'];
 
 echo "The GE last updated on ".date("M jS \a\\t g:ia T", $time);

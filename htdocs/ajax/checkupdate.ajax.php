@@ -7,7 +7,7 @@ require_once "../inc/functions.inc.php";
     $cursor->sort({'time'=> -1});
 	my $dbUpdateText=$cursor->next;
 */
-$cursor = $miscColl->find({name=>"updateText"});
+$cursor = $miscColl->find(array(name=>"updateText"));
 $cursor->sort(array('time'=> -1));
 $dbUpdateText=$cursor->next;
 $time=$dbUpdateText->time;

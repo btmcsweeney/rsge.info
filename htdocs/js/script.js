@@ -227,7 +227,7 @@ $(function(){
     setHeight();
     //$.cookie('items', null);
     getSavedGraphs();
-    checkForUpdate();
+    //checkForUpdate();
     
     $('#signUpButton').click(function(){
 	$('#signUpForm').dialog('open');

@@ -1,5 +1,5 @@
 <?php
-require_once "../../inc/functions.inc.php";
+require_once "../inc/functions.inc.php";
 if (isset($_REQUEST['id'])) {
     $id=clean_int($_REQUEST['id']);
     if (isset($_REQUEST['mintime'])) {

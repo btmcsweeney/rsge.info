@@ -1,5 +1,5 @@
 <?php
-require_once "../inc/functions.inc.php";
+require_once "inc/functions.inc.php";
 ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->

@@ -8,7 +8,7 @@ use MongoDB;
 use warnings;
 use strict;
 
-my $resetDB=1;
+my $resetDB=0;
 my $api="http://services.runescape.com/m=itemdb_rs/api";
 
 #MongoDB Connection

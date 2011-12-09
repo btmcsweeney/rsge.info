@@ -1,5 +1,5 @@
 <?php
-require_once "../../inc/functions.inc.php";
+require_once "../inc/functions.inc.php";
 if (isset($_POST['items']) && isset($user_id)) {
     if (isset($_POST['id'])) {
 	mysql_query("update rsge.graphs set items='".$_POST['items']."' where id=".$_POST['id']." and owner=$user_id");

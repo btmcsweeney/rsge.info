@@ -1,4 +1,4 @@
-<?php require_once "../../inc/functions.inc.php"; ?>
+<?php require_once "inc/functions.inc.php"; ?>
 <?php
 /*
 For now I guess I'll just put some notes in here.<br><br>

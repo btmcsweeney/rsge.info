@@ -1,5 +1,5 @@
 <?php
-require_once "../../inc/functions.inc.php";
+require_once "../inc/functions.inc.php";
 if (isset($_GET['term'])){
     $term=clean_string($_GET['term']);
     $resultArray=array();

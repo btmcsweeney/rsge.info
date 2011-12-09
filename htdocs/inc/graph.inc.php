@@ -1,4 +1,4 @@
-<?php require_once "../../inc/functions.inc.php"; ?>
+<?php require_once "inc/functions.inc.php"; ?>
 <div class="inner-header">
     <form method="post" id="addItem">
     <input type="text" name="id" id="addItemInput" class="itemSearch">

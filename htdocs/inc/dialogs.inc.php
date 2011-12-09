@@ -1,4 +1,4 @@
-<?php require_once "../../inc/functions.inc.php"; ?>
+<?php require_once "inc/functions.inc.php"; ?>
 <div class="hidden">
     <div id="saveAsDialog" title="Save Graph As...">Title:<br><input type="text" name="title" id="saveGraphTitle"></div>
     <div id="newCalcDialog" title="Select New Calculation Type">

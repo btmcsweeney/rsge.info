@@ -7,7 +7,7 @@ if (isset($_GET['term'])){
     $items=mysql_query("select * from rsge.items where name LIKE '%$term%' order by searches desc");
     while ($item=mysql_fetch_array($items)) {
     */
-    $items=$itemsColl->find(array("name"=> new MongoRegex("/$term/i"));
+    $items=$itemsColl->find(array("name"=> new MongoRegex("/$term/i")));
     $items->sort(array("searches"=>-1));
     while ($item=$items->getNext()) {
 	    extract($item, EXTR_PREFIX_ALL, "item");

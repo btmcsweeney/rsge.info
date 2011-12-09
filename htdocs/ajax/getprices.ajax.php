@@ -7,15 +7,6 @@ if (isset($_REQUEST['id'])) {
     } else {
 	$mintime=time()-180*24*60*60*1000;//180 days
     }
-    /*
-    $query=mysql_query("select * from rsge.items where id='$id'");
-    $item=mysql_fetch_array($query);
-    echo $item['name'];
-    $query=mysql_query("select * from rsge_items.$id where time>$mintime order by time desc");
-    while ($point = mysql_fetch_array($query)) {
-	echo ';'.($point['time']*1000) . ',' . $point['price'];
-    }
-    */
     if (!($item=$itemsColl->findOne(array("id"=>$id)))) {
 	$page=`sh /var/www/getpage.sh http://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item=$id`;
 	$item=json_decode($page);

@@ -25,7 +25,7 @@ function makeGraph(title){
 	},
 	tooltip: {
 	    formatter: function() {
-		return Highcharts.dateFormat('%A, %b. %e %l%P', this.x) +'<br/>'+
+		return Highcharts.dateFormat('%A, %b. %e', this.x) +'<br/>'+
 		addCommas(this.y) +' gp';
 	    }
 	}
@@ -74,10 +74,10 @@ function addItem(id, minTime) {
 		    series.name=val;
 		    graphName=val;
 		} else {
-		    var point=new Array();
+		    var point=[];
 		    var points=val.split(',');
 		    $.each(points, function(pointNum, pointVal){
-			point.push(pointVal*1);
+			    point.push(pointVal*1);
 		    });
 		    series.data.push(point);
 		}

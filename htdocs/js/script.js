@@ -37,7 +37,7 @@ function checkForUpdate()  {
     $.get('ajax/checkupdate.ajax.php', function(result) {
 	$('#update-times').html(result);
     });
-    setTimeout(checkForUpdate(), 15000);
+    setTimeout("checkForUpdate();", 15000);
 }
 
 function addCommas(nStr)

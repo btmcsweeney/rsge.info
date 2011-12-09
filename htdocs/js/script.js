@@ -25,8 +25,8 @@ function makeGraph(title){
 	},
 	tooltip: {
 	    formatter: function() {
-		return '<b>'+ this.series.name +'</b><br/>'+
-		Highcharts.dateFormat('%e. %b', this.x) +': '+ addCommas(this.y) +' gp';
+		return Highcharts.dateFormat('%A, %b. %e %l%P', this.x) +'<br/>'+
+		addCommas(this.y) +' gp';
 	    }
 	}
     });

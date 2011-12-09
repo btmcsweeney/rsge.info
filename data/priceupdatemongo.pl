@@ -119,7 +119,7 @@ sub checkForNewItems {
 						if ($itemsColl->find_one({id=>$itemID})) {
 							$itemsColl->update({id=>$itemID}, {price=>$itemPrice});
 						} else {
-							$itemsColl->insert({id=>$itemID, name=>$itemName, price=>$itemPrice});
+							$itemsColl->insert({id=>$itemID, name=>$itemName, price=>$itemPrice, searches=>0});
 						}
 					}
 					print "\n";

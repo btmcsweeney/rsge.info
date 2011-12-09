@@ -1,6 +1,5 @@
 var graph, curGraph=0, graphName, mode='main', savedGraphs;
-var d=new Date();
-var items=new Array();
+var items=[];
 
 function makeGraph(title){
     graph=new Highcharts.Chart({
@@ -19,10 +18,10 @@ function makeGraph(title){
 		month: '%e. %b',
 		year: '%b'
 	    },
-	    maxPadding: .03
+	    maxPadding: 0.03
 	},
 	yAxis: {
-	    title: 'Price',
+	    title: 'Price'
 	},
 	tooltip: {
 	    formatter: function() {
@@ -44,9 +43,9 @@ function checkForUpdate()  {
 function addCommas(nStr)
 {
     nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
     var rgx = /(\d+)(\d{3})/;
     while (rgx.test(x1)) {
 	x1 = x1.replace(rgx, '$1' + ',' + '$2');
@@ -66,7 +65,7 @@ function addItem(id, minTime) {
     while (graph.series.length) {
 	graph.series[0].remove(false);
     }
-    $.post('ajax/getpricesmongo.ajax.php', {"id": id, "mintime": minTime}, function(result) {
+    $.post('ajax/getprices.ajax.php', {"id": id, "mintime": minTime}, function(result) {
 	if (result!="") {
 	    var series={data: []};
 	    var values=result.split(';');
@@ -100,8 +99,8 @@ function addItem(id, minTime) {
 function getSavedGraphs() {
     if ($.cookie('items')!=null) {
 	savedGraphs=$.cookie('items').split('-');
-	for (saved in savedGraphs) {
-	    i=savedGraphs[saved].split('_');
+	for (var saved in savedGraphs) {
+	    var i=savedGraphs[saved].split('_');
 	    $('#userGraphs').append('<button class="savedGraphButton" value="'+i[0]+'">'+i[1]+'</button>');
 	}
     }
@@ -138,8 +137,8 @@ function saveGraph(id) {
 
 function unsaveGraph(id) {
     savedGraphs=$.cookie('items').split('-');
-    for (saved in savedGraphs) {
-	i=savedGraphs[saved].split('_');
+    for (var saved in savedGraphs) {
+	var i=savedGraphs[saved].split('_');
 	if (i[0]!=id) {
 	    if (saved!=0) {
 		$.cookie('items', ($.cookie('items')+'-'+curGraph+'_'+graphName), { expires: 500});

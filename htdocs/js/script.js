@@ -1,6 +1,5 @@
 var graph, curGraph=0, graphName, mode='main', savedGraphs;
-var d=new Date();
-var items=new Array();
+var items=[];
 
 function makeGraph(title){
     graph=new Highcharts.Chart({
@@ -19,10 +18,10 @@ function makeGraph(title){
 		month: '%e. %b',
 		year: '%b'
 	    },
-	    maxPadding: .03
+	    maxPadding: 0.03
 	},
 	yAxis: {
-	    title: 'Price',
+	    title: 'Price'
 	},
 	tooltip: {
 	    formatter: function() {
@@ -38,15 +37,15 @@ function checkForUpdate()  {
     $.get('ajax/checkupdate.ajax.php', function(result) {
 	$('#update-times').html(result);
     });
-    setTimeout("checkForUpdate();", 15000);
+    setTimeout(checkForUpdate(), 15000);
 }
 
 function addCommas(nStr)
 {
     nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
     var rgx = /(\d+)(\d{3})/;
     while (rgx.test(x1)) {
 	x1 = x1.replace(rgx, '$1' + ',' + '$2');
@@ -138,8 +137,8 @@ function saveGraph(id) {
 
 function unsaveGraph(id) {
     savedGraphs=$.cookie('items').split('-');
-    for (saved in savedGraphs) {
-	i=savedGraphs[saved].split('_');
+    for (var saved in savedGraphs) {
+	var i=savedGraphs[saved].split('_');
 	if (i[0]!=id) {
 	    if (saved!=0) {
 		$.cookie('items', ($.cookie('items')+'-'+curGraph+'_'+graphName), { expires: 500});

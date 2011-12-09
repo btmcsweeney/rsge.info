@@ -7,10 +7,10 @@ require_once "../inc/functions.inc.php";
     $cursor->sort({'time'=> -1});
 	my $dbUpdateText=$cursor->next;
 */
-$cursor = $miscColl->find(array(name=>"updateText"));
+$cursor = $miscColl->find(array('name'=>"updateText"));
 $cursor->sort(array('time'=> -1));
-$dbUpdateText=$cursor->next;
-$time=$dbUpdateText->time;
+$cursor->getNext();
+$time=$cursor->time;
 
 echo "The GE last updated on ".date("M jS \a\\t g:ia T", $time);
 $hours=floor((time()-$time)/3600);

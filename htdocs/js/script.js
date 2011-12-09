@@ -66,7 +66,7 @@ function addItem(id, minTime) {
     while (graph.series.length) {
 	graph.series[0].remove(false);
     }
-    $.post('ajax/getpricesmongo.ajax.php', {"id": id, "mintime": minTime}, function(result) {
+    $.post('ajax/getprices.ajax.php', {"id": id, "mintime": minTime}, function(result) {
 	if (result!="") {
 	    var series={data: []};
 	    var values=result.split(';');
@@ -100,8 +100,8 @@ function addItem(id, minTime) {
 function getSavedGraphs() {
     if ($.cookie('items')!=null) {
 	savedGraphs=$.cookie('items').split('-');
-	for (saved in savedGraphs) {
-	    i=savedGraphs[saved].split('_');
+	for (var saved in savedGraphs) {
+	    var i=savedGraphs[saved].split('_');
 	    $('#userGraphs').append('<button class="savedGraphButton" value="'+i[0]+'">'+i[1]+'</button>');
 	}
     }

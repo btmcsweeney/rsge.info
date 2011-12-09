@@ -8,7 +8,7 @@ use MongoDB;
 use warnings;
 use strict;
 
-my $resetDB=0;
+my $resetDB=1;
 my $api="http://services.runescape.com/m=itemdb_rs/api";
 
 #MongoDB Connection
@@ -23,6 +23,7 @@ if ($resetDB) {
 	$catsColl->remove();
 	$itemsColl->remove();
 	$miscColl->remove(); 
+    $itemHistColl->remove();
 	print "done\n\n";
 }
 
@@ -31,6 +32,7 @@ if (checkForUpdate()) {
 	checkForNewItems();
 }
 #checkForNewItems();
+
 sub checkForUpdate {
 	print "Grabbing file to check for updates... ";
 	my $updateText=get("$api/catalogue/items.json?category=28&alpha=d&page=0"); #Grabs the 'D' page under prayer supplies
@@ -103,8 +105,8 @@ sub checkForNewItems {
 					}
 					my $itemPage=from_json($itemPageJSON);
 					my $itemsOnPage;
-					if ($page==ceil($itemNum/12)) {
-						$itemsOnPage=$itemNum%12;
+					if ($page==ceil($itemNum/12) && $itemNum%12) {
+	    					$itemsOnPage=$itemNum%12;
 					} else {
 						$itemsOnPage=12;
 					}

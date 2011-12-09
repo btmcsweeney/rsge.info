@@ -9,9 +9,8 @@ require_once "../inc/functions.inc.php";
 */
 $cursor = $miscColl->find(array('name'=>"updateText"));
 $cursor->sort(array('time'=> -1));
-$cursor->getNext();
-$time=$cursor->{'time'}/1000;
-var_dump($cursor);
+$time=$cursor->getNext()->{'time'}/1000;
+var_dump($cursor->getNext());
 
 echo "The GE last updated on ".date("M jS \a\\t g:ia T", $time);
 $hours=floor((time()-$time)/3600);

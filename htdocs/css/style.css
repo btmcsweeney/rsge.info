@@ -269,6 +269,7 @@ aside button { width: 138px; margin-bottom: 4px; }
 #main-container { height: 200px; background: #fff; }
 
 footer { background: #0d5995; height: 24px; border-top: solid 1px #282828; padding: 10px; color: #f2f2f2; }
+footer a { margin-right: 15px; height: 24px; }
 
 .asPrice { font-size: 14px; line-height: 2; }
 .ui-autocomplete { max-height: 400px; overflow-y: auto; }

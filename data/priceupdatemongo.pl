@@ -28,15 +28,12 @@ if ($resetDB) {
 }
 
 if (checkForUpdate()) {
-	#sleep(900);
 	checkForNewItems();
 }
-#checkForNewItems();
 
 sub checkForUpdate {
 	print "Grabbing file to check for updates... ";
 	my $updateText=get("$api/catalogue/items.json?category=28&alpha=d&page=0"); #Grabs the 'D' page under prayer supplies
-	sleep(10);
 	while (!$updateText || is_error($updateText)) {
 		print "1";
 		$updateText=get("$api/catalogue/items.json?category=28&alpha=d&page=0");
@@ -68,7 +65,6 @@ sub checkForNewItems {
 	for (my $i=0; $i<37; $i++) { #37 categories
 		#print "Category $i:\n";
 		my $categoryJSON=get("$api/catalogue/category.json?category=$i");
-		sleep(10);
 		while (!$categoryJSON || is_error($categoryJSON)) { #They figured out how to limit requests!
 			print "1";
 			$categoryJSON=get("$api/catalogue/category.json?category=$i");
@@ -97,7 +93,6 @@ sub checkForNewItems {
 				$catsColl->update({category=>$i}, $category);
 				for (my $page=1; $page<=ceil($itemNum/12); $page++) {
 					my $itemPageJSON=get("$api/catalogue/items.json?category=$i&alpha=$letter&page=$page");
-					sleep(10);
 					while (!$itemPageJSON || is_error($itemPageJSON)) {
 						print "1";
 						$itemPageJSON=get("$api/catalogue/items.json?category=$i&alpha=$letter&page=$page");
@@ -114,12 +109,11 @@ sub checkForNewItems {
 					for (my $a=0; $a<$itemsOnPage; $a++) {
 						my $itemID=$itemPage->{items}->[$a]->{id};
 						my $itemName=$itemPage->{items}->[$a]->{name};
-						my $itemPrice=$itemPage->{items}->[$a]->{current}->{price};
 						print " $itemID";
 						if ($itemsColl->find_one({id=>$itemID})) {
 							$itemsColl->update({id=>$itemID}, {price=>$itemPrice});
 						} else {
-							$itemsColl->insert({id=>$itemID, name=>$itemName, price=>$itemPrice, searches=>0});
+							$itemsColl->insert({id=>$itemID, name=>$itemName, searches=>0});
 						}
 					}
 					print "\n";

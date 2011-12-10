@@ -1,12 +1,5 @@
 <?php
 require_once "../inc/functions.inc.php";
-
-/*
-    - From priceupdatemongo.pl -
-    $cursor = $miscColl->find({name=>"updateText"});
-    $cursor->sort({'time'=> -1});
-	my $dbUpdateText=$cursor->next;
-*/
 $cursor = $miscColl->find(array('name'=>"updateText"));
 $cursor->sort(array('time'=> -1));
 $lastUpdate=$cursor->getNext();

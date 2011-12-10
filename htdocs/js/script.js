@@ -156,7 +156,7 @@ function loadGraphMode() {
     $('.itemSearch').autocomplete({
         source: 'ajax/itemsearch.ajax.php',
         minLength: 2,
-        select: function(ui) {
+        select: function(event, ui) {
             $.post('ajax/searchcount.ajax.php', { "id": ui.item.id });
             graphItem(ui.item.id, $('#timeRangeSelect').val() * 60 * 60 * 24);
             items.push(ui.item.id);

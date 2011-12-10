@@ -78,7 +78,7 @@ function graphItem(id, minTime) {
                 } else {
                     var point = [];
                     var points = val.split(',');
-                    $.each(points, function(pointVal) {
+                    $.each(points, function(pointNum, pointVal) {
                         point.push(pointVal * 1);
                     });
                     series.data.push(point);
@@ -169,7 +169,7 @@ function loadGraphMode() {
         event.preventDefault();
     });
 
-    $('#removeItemSelect').change(function() {
+    $('#removeItemSelect').change(function(event, ui) {
         var seriesNum = $('#removeItemSelect').val();
         items.splice(seriesNum, 1);
         graph.series[seriesNum].remove();
@@ -180,7 +180,7 @@ function loadGraphMode() {
         $('#removeItemSelect').empty().html(newOptions).trigger('liszt:updated');
     });
 
-    $('#timeRangeSelect').change(function() {
+    $('#timeRangeSelect').change(function(event, ui) {
         var seconds = $('#timeRangeSelect').val() * 60 * 60 * 24;
         while (graph.series.length) {
             graph.series[0].remove(false);

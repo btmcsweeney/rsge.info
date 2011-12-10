@@ -65,10 +65,7 @@ function graphItem(id, minTime) {
     while (graph.series.length) {
         graph.series[0].remove(false);
     }
-    $.post('ajax/getprices.ajax.php', {
-        "id": id,
-        "mintime": minTime
-    }, function(result) {
+    $.post('ajax/getprices.ajax.php', { "id": id, "mintime": minTime }, function(result) {
         if (result != "") {
             var series = {
                 data: []
@@ -81,7 +78,7 @@ function graphItem(id, minTime) {
                 } else {
                     var point = [];
                     var points = val.split(',');
-                    $.each(points, function(pointNum, pointVal) {
+                    $.each(points, function(pointVal) {
                         point.push(pointVal * 1);
                     });
                     series.data.push(point);
@@ -140,13 +137,9 @@ function saveGraph(id) {
         $('.savedGraphButton[value=' + id + ']').hide();
     } else {
         if ($.cookie('items') != null) {
-            $.cookie('items', ($.cookie('items') + '-' + curGraph + '_' + graphName), {
-                expires: 500
-            });
+            $.cookie('items', ($.cookie('items') + '-' + curGraph + '_' + graphName), {expires: 500});
         } else {
-            $.cookie('items', curGraph + '_' + graphName, {
-                expires: 500
-            });
+            $.cookie('items', curGraph + '_' + graphName, {expires: 500});
         }
         $('#userGraphs').append('<button class="savedGraphButton" value="' + curGraph + '">' + graphName + '</button>');
         $('.savedGraphButton').click(function() {
@@ -163,10 +156,8 @@ function loadGraphMode() {
     $('.itemSearch').autocomplete({
         source: 'ajax/itemsearch.ajax.php',
         minLength: 2,
-        select: function(event, ui) {
-            $.post('ajax/searchcount.ajax.php', {
-                "id": ui.item.id
-            });
+        select: function(ui) {
+            $.post('ajax/searchcount.ajax.php', { "id": ui.item.id });
             graphItem(ui.item.id, $('#timeRangeSelect').val() * 60 * 60 * 24);
             items.push(ui.item.id);
         }
@@ -178,7 +169,7 @@ function loadGraphMode() {
         event.preventDefault();
     });
 
-    $('#removeItemSelect').change(function(event, ui) {
+    $('#removeItemSelect').change(function() {
         var seriesNum = $('#removeItemSelect').val();
         items.splice(seriesNum, 1);
         graph.series[seriesNum].remove();
@@ -189,7 +180,7 @@ function loadGraphMode() {
         $('#removeItemSelect').empty().html(newOptions).trigger('liszt:updated');
     });
 
-    $('#timeRangeSelect').change(function(event, ui) {
+    $('#timeRangeSelect').change(function() {
         var seconds = $('#timeRangeSelect').val() * 60 * 60 * 24;
         while (graph.series.length) {
             graph.series[0].remove(false);

@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 use POSIX;
 use Data::Dumper;
-use HTML::TableExtract;
 use LWP::Simple;
 use JSON;
 use MongoDB;
@@ -19,7 +18,7 @@ my $itemsColl  = $database->items;
 my $miscColl   = $database->misc;
 my $itemHistColl=$database->itemPrices;
 if ($resetDB) {
-	print "\n\nRESETTING DATABASE... ";
+    print "\n\nRESETTING DATABASE... ";
 	$catsColl->remove();
 	$itemsColl->remove();
 	$miscColl->remove(); 
@@ -110,9 +109,7 @@ sub checkForNewItems {
 						my $itemID=$itemPage->{items}->[$a]->{id};
 						my $itemName=$itemPage->{items}->[$a]->{name};
 						print " $itemID";
-						if ($itemsColl->find_one({id=>$itemID})) {
-							$itemsColl->update({id=>$itemID}, {price=>$itemPrice});
-						} else {
+						if (!$itemsColl->find_one({id=>$itemID})) {
 							$itemsColl->insert({id=>$itemID, name=>$itemName, searches=>0});
 						}
 					}
@@ -124,4 +121,3 @@ sub checkForNewItems {
 		print "\n";
 	}
 }
-

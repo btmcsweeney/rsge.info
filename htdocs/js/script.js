@@ -122,6 +122,7 @@ function saveGraph(id) {
         $.cookie('items', null);
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
+            alert(i[0]);
             if (i[0] != id) {
                 if ($.cookie('items') != null) {
                     $.cookie('items', ($.cookie('items') + '%7C' + i[0] + '_' + i[1]), {

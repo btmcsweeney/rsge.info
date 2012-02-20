@@ -108,7 +108,7 @@ function graphItem(id, minTime) {
 
 function getSavedGraphs() {
     if ($.cookie('items') != null) {
-        savedGraphs = $.cookie('items').split('|');
+        savedGraphs = $.cookie('items').split('%7C');
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             $('#userGraphs').append('<button class="savedGraphButton" value="' + i[0] + '">' + i[1] + '</button>');
@@ -118,7 +118,7 @@ function getSavedGraphs() {
 
 function saveGraph(id) {
     if ($('#saveGraphButton').html() === 'Unsave') { // If we are unsaving the graph
-        var savedGraphs = $.cookie('items').split('|');
+        var savedGraphs = $.cookie('items').split('%7C');
         $.cookie('items', null);
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
@@ -126,7 +126,7 @@ function saveGraph(id) {
                 alert(1);
                 if ($.cookie('items') != null) {
                     alert(3);
-                    $.cookie('items', ($.cookie('items') + '|' + i[0] + '_' + i[1]), {
+                    $.cookie('items', ($.cookie('items') + '%7C' + i[0] + '_' + i[1]), {
                         expires: 500
                     });
                 } else {
@@ -140,7 +140,7 @@ function saveGraph(id) {
         $('.savedGraphButton[value=' + id + ']').hide();
     } else { // If we are saving the graph
         if ($.cookie('items') != null) {
-            $.cookie('items', ($.cookie('items') + '|' + curGraph + '_' + graphName), {expires: 500});
+            $.cookie('items', ($.cookie('items') + '%7C' + curGraph + '_' + graphName), {expires: 500});
         } else {
             $.cookie('items', curGraph + '_' + graphName, {expires: 500});
         }

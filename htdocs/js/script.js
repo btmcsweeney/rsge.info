@@ -123,11 +123,14 @@ function saveGraph(id) {
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             if (i[0] != id) {
+                alert(1);
                 if ($.cookie('items') != null) {
+                    alert(3);
                     $.cookie('items', ($.cookie('items') + '|' + i[0] + '_' + i[1]), {
                         expires: 500
                     });
                 } else {
+                    alert(2);
                     $.cookie('items', i[0] + '_' + i[1], {
                         expires: 500
                     });

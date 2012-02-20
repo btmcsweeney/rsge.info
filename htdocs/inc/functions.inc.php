@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once "dbconnect.inc.php";
+
+$ip=$_SERVER['REMOTE_ADDR'];
+
 $dateformat="M jS \a\\t g:ia T";
 class user {
     function info($id){

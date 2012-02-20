@@ -208,6 +208,7 @@ $(function() {
     setHeight();
     getSavedGraphs();
     checkForUpdate();
+    $('input[placeholder], textarea[placeholder]').placeholder();
 
     $('.savedGraphButton').click(function() {
         graphItem($(this).val(), $('#timeRangeSelect').val() * 60 * 60 * 24);

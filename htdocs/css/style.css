@@ -260,7 +260,7 @@ aside button { width: 138px; margin-bottom: 4px; }
 .inner-header { padding: 10px; border-bottom: solid 1px #282828; background: #f2f2f2; }
 .inner-header form { display: inline; vertical-align: top; }
 
-#graphItemInput { -webkit-border-radius: 4px 0 0 4px; -moz-border-radius: 4px 0 0 4px; border-radius: 4px 0 0 4px; }
+#graphItemInput { -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
 #graphItemSubmit { -webkit-border-radius: 0 4px 4px 0; -moz-border-radius: 0 4px 4px 0; border-radius: 0 4px 4px 0; margin-left: -4px; }
 #removeItemSelect { min-width: 150px; }
 #timeRangeSelect { width: 90px; }

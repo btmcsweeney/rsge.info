@@ -108,7 +108,7 @@ function graphItem(id, minTime) {
 
 function getSavedGraphs() {
     if ($.cookie('items') != null) {
-        savedGraphs = $.cookie('items').split('-');
+        savedGraphs = $.cookie('items').split('|');
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             $('#userGraphs').append('<button class="savedGraphButton" value="' + i[0] + '">' + i[1] + '</button>');
@@ -117,14 +117,14 @@ function getSavedGraphs() {
 }
 
 function saveGraph(id) {
-    if ($('#saveGraphButton').html() == 'Unsave') {
-        savedGraphs = $.cookie('items').split('-');
+    if ($('#saveGraphButton').html() === 'Unsave') { // If we are unsaving the graph
+        var savedGraphs = $.cookie('items').split('|');
         $.cookie('items', null);
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             if (i[0] != id) {
-                if (saved != 0) {
-                    $.cookie('items', ($.cookie('items') + '-' + i[0] + '_' + i[1]), {
+                if ($.cookie('items') == null) {
+                    $.cookie('items', ($.cookie('items') + '|' + i[0] + '_' + i[1]), {
                         expires: 500
                     });
                 } else {
@@ -135,7 +135,7 @@ function saveGraph(id) {
             }
         }
         $('.savedGraphButton[value=' + id + ']').hide();
-    } else {
+    } else { // If we are saving the graph
         if ($.cookie('items') != null) {
             $.cookie('items', ($.cookie('items') + '-' + curGraph + '_' + graphName), {expires: 500});
         } else {

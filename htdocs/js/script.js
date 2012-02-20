@@ -66,7 +66,7 @@ function graphItem(id, minTime) {
         graph.series[0].remove(false);
     }
     $.post('ajax/getprices.ajax.php', { "id": id, "mintime": minTime }, function(result) {
-        if (result != "") {
+        if (result !== "") {
             var series = {
                 data: []
             };
@@ -84,7 +84,7 @@ function graphItem(id, minTime) {
                     series.data.push(point);
                 }
             });
-            if (graph == null) {
+            if (graph === null) {
                 makeGraph(graphName);
             }
             graph.addSeries(series);
@@ -107,7 +107,7 @@ function graphItem(id, minTime) {
 }
 
 function getSavedGraphs() {
-    if ($.cookie('items') != null) {
+    if ($.cookie('items') !== null) {
         savedGraphs = $.cookie('items').split('|');
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
@@ -123,7 +123,7 @@ function saveGraph(id) {
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             if (i[0] != id) {
-                if ( $.cookie('items') != null) {
+                if ($.cookie('items') !== null) {
                     $.cookie('items', ($.cookie('items') + '|' + i[0] + '_' + i[1]), {
                         expires: 500
                     });
@@ -136,7 +136,7 @@ function saveGraph(id) {
         }
         $('.savedGraphButton[value=' + id + ']').hide();
     } else { // If we are saving the graph
-        if ($.cookie('items') != null) {
+        if ($.cookie('items') !== null) {
             $.cookie('items', ($.cookie('items') + '|' + curGraph + '_' + graphName), {expires: 500});
         } else {
             $.cookie('items', curGraph + '_' + graphName, {expires: 500});

@@ -134,7 +134,8 @@ function saveGraph(id) {
                 }
             }
         }
-        $('.savedGraphButton[value=' + id + ']').hide();
+        $('.savedGraphButton[value=' + id + ']').remove();
+        $('#saveGraphButton').html('Save');
     } else { // If we are saving the graph
         if ($.cookie('items') !== null) {
             $.cookie('items', ($.cookie('items') + '|' + curGraph + '_' + graphName), {expires: 500});

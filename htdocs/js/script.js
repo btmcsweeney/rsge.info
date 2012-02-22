@@ -50,19 +50,19 @@ function makeGraph(title, seriesData) {
                 month: '%e. %b',
                 year: '%b'
             },
-            maxPadding: 0.03
+            //maxPadding: 0.03
         },
         yAxis: {
             title: 'Price'
         },
-        /*tooltip: {
-            formatter: function() {
-                return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
-            }
-        },*/
         series: [{
             title: title,
-            data: seriesData
+            data: seriesData,
+            tooltip: {
+                formatter: function() {
+                    return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
+                }
+            }
         }]
     });
     $(".highcharts-container text:contains('Highcharts')").remove();

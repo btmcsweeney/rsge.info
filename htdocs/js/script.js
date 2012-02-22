@@ -90,7 +90,7 @@ function setHeight() {
     var mainHeight = $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight();
     $('#main-container').height(mainHeight);
     $('aside').height($(window).height() - $('header').outerHeight() - $('nav').outerHeight());
-    if (graph) { graph.setSize($(window).width() - 144, mainHeight - $('.inner-header').outerHeight()); }
+    if (graph) { graph.setSize($(window).width() - 144 - 10, mainHeight - $('.inner-header').outerHeight()); }
 }
 
 function graphItem(id, minTime) {

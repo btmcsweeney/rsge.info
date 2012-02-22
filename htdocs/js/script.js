@@ -49,7 +49,7 @@ function makeGraph(titleText, seriesData) {
                 year: '%b'
             },
             endOnTick: false,
-            maxPadding: 0.03
+            maxPadding: 0.9
         },
         yAxis: {
             title: 'Price'

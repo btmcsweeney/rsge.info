@@ -263,7 +263,6 @@ aside button { width: 138px; margin-bottom: 4px; }
 #graphItemInput { -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
 .ui-autocomplete-loading { background: url('http://rsge.info/img/searchload.gif') right center no-repeat !important; }
 #removeItemSelect { min-width: 150px; }
-#timeRangeSelect { width: 90px; }
 .chzn-search { display: none; }
 
 #main-container { height: 200px; background: #fff; }

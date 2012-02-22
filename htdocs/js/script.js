@@ -7,7 +7,7 @@ function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
-            //reflow: false,
+            reflow: false,
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
         title: {
@@ -92,7 +92,7 @@ function setHeight() {
     var mainHeight = $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight();
     $('#main-container').height(mainHeight);
     $('aside').height($(window).height() - $('header').outerHeight() - $('nav').outerHeight());
-    if (graph) { graph.setSize($(window).width() - 154, mainHeight - $('.inner-header').outerHeight()); }
+    if (graph) { graph.setSize($(window).width() - 164, mainHeight - $('.inner-header').outerHeight()); }
 }
 
 function graphItem(id, minTime) {

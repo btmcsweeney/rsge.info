@@ -10,7 +10,12 @@ function makeGraph(titleText, seriesData) {
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
         title: {
-            text: titleText
+            text: titleText,
+            style: {
+                color: '#3E576F',
+                fontSize: '16px',
+                fontWeight: 'bold'
+            }
         },
         rangeSelector: {
             buttons: [

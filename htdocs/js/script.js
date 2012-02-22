@@ -2,6 +2,7 @@ var graph, curGraph = 0,
     graphName, mode = 'main',
     savedGraphs;
 var items = [];
+var d = new Date;
 
 function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
@@ -49,7 +50,7 @@ function makeGraph(titleText, seriesData) {
                 year: '%b'
             },
             endOnTick: false,
-            max: Date.getTime() + 1000*60*60*24*500
+            max: d.getTime() + 1000*60*60*24
         },
         yAxis: {
             title: 'Price'

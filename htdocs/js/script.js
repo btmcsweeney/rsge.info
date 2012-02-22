@@ -3,7 +3,7 @@ var graph, curGraph = 0,
     savedGraphs;
 var items = [];
 
-function makeGraph(title, seriesData) {
+function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
@@ -12,7 +12,7 @@ function makeGraph(title, seriesData) {
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
         title: {
-            text: title
+            text: titleText
         },
         rangeSelector: {
             buttons: [
@@ -56,7 +56,7 @@ function makeGraph(title, seriesData) {
             title: 'Price'
         },
         series: [{
-            title: title,
+            title: titleText,
             data: seriesData,
             tooltip: {
                 formatter: function() {

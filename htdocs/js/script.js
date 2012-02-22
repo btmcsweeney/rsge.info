@@ -128,7 +128,7 @@ function graphItem(id, minTime) {
                 $('#saveGraphButton').html('Save');
             }
             $('#saveGraphButton').removeClass("hidden");
-            window.location('#' + id);
+            window.location = '#' + id;
         }
     });
 }

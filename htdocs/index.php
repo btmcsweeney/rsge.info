@@ -43,7 +43,7 @@ require_once "inc/functions.inc.php";
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
     
     <!-- scripts concatenated and minified via ant build script-->
-    <script defer src="js/mylibs/highcharts.js"></script>
+    <script defer src="js/mylibs/highstock.js"></script>
     <script defer src="js/mylibs/chosen.jquery.min.js"></script>
     <script defer src="js/mylibs/jquery-ui-1.8.16.custom.min.js"></script>
     <script defer src="js/placeholder.min.js"></script>

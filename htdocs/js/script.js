@@ -4,18 +4,48 @@ var graph, curGraph = 0,
 var items = [];
 
 function makeGraph(title) {
-    graph = new Highcharts.Chart({
+    graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
-            type: 'spline',
+            //type: 'spline',
             reflow: false,
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
         title: {
             text: title
         },
+        rangeSelector: {
+            buttons: [
+                {
+                    type: 'week',
+                    count: 2,
+                    text: '2w'
+                }, {
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 2,
+                    text: '2m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 4,
+                    text: '4m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }
+            ],
+            selected: 1
+        },
         xAxis: {
-            type: 'datetime',
+            //type: 'datetime',
             dateTimeLabelFormats: {
                 month: '%e. %b',
                 year: '%b'

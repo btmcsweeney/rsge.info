@@ -3,6 +3,8 @@ var graph, curGraph = 0,
     savedGraphs;
 var items = [];
 
+//test
+
 function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
         chart: {

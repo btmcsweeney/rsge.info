@@ -2,7 +2,7 @@ var graph, curGraph = 0,
     graphName, mode = 'main',
     savedGraphs;
 var items = [];
-
+//WHAT
 function makeGraph(title) {
     graph = new Highcharts.Chart({
         chart: {
@@ -66,7 +66,7 @@ function graphItem(id, minTime) {
         graph.series[0].remove(false);
     }
     $.post('ajax/getprices.ajax.php', { "id": id, "mintime": minTime }, function(result) {
-        if (result != "") {
+        if (result !== "") {
             var series = {
                 data: []
             };
@@ -84,7 +84,7 @@ function graphItem(id, minTime) {
                     series.data.push(point);
                 }
             });
-            if (graph == null) {
+            if (graph === null) {
                 makeGraph(graphName);
             }
             graph.addSeries(series);
@@ -107,8 +107,8 @@ function graphItem(id, minTime) {
 }
 
 function getSavedGraphs() {
-    if ($.cookie('items') != null) {
-        savedGraphs = $.cookie('items').split('-');
+    if ($.cookie('items') !== null) {
+        savedGraphs = $.cookie('items').split('|');
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             $('#userGraphs').append('<button class="savedGraphButton" value="' + i[0] + '">' + i[1] + '</button>');
@@ -117,14 +117,14 @@ function getSavedGraphs() {
 }
 
 function saveGraph(id) {
-    if ($('#saveGraphButton').html() == 'Unsave') {
-        savedGraphs = $.cookie('items').split('-');
+    if ($('#saveGraphButton').html() === 'Unsave') { // If we are unsaving the graph
+        var savedGraphs = $.cookie('items').split('|');
         $.cookie('items', null);
         for (var saved in savedGraphs) {
             var i = savedGraphs[saved].split('_');
             if (i[0] != id) {
-                if (saved != 0) {
-                    $.cookie('items', ($.cookie('items') + '-' + i[0] + '_' + i[1]), {
+                if ($.cookie('items') !== null) {
+                    $.cookie('items', ($.cookie('items') + '|' + i[0] + '_' + i[1]), {
                         expires: 500
                     });
                 } else {
@@ -134,10 +134,11 @@ function saveGraph(id) {
                 }
             }
         }
-        $('.savedGraphButton[value=' + id + ']').hide();
-    } else {
-        if ($.cookie('items') != null) {
-            $.cookie('items', ($.cookie('items') + '-' + curGraph + '_' + graphName), {expires: 500});
+        $('.savedGraphButton[value=' + id + ']').remove();
+        $('#saveGraphButton').html('Save');
+    } else { // If we are saving the graph
+        if ($.cookie('items') !== null) {
+            $.cookie('items', ($.cookie('items') + '|' + curGraph + '_' + graphName), {expires: 500});
         } else {
             $.cookie('items', curGraph + '_' + graphName, {expires: 500});
         }
@@ -156,6 +157,7 @@ function loadGraphMode() {
     $('.itemSearch').autocomplete({
         source: 'ajax/itemsearch.ajax.php',
         minLength: 2,
+        delay: 200,
         select: function(event, ui) {
             $.post('ajax/searchcount.ajax.php', { "id": ui.item.id });
             graphItem(ui.item.id, $('#timeRangeSelect').val() * 60 * 60 * 24);
@@ -207,6 +209,7 @@ $(function() {
     setHeight();
     getSavedGraphs();
     checkForUpdate();
+    $('input[placeholder], textarea[placeholder]').placeholder();
 
     $('.savedGraphButton').click(function() {
         graphItem($(this).val(), $('#timeRangeSelect').val() * 60 * 60 * 24);

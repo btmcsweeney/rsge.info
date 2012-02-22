@@ -2,7 +2,7 @@ var graph, curGraph = 0,
     graphName, mode = 'main',
     savedGraphs;
 var items = [];
-
+//WHAT
 function makeGraph(title) {
     graph = new Highcharts.Chart({
         chart: {

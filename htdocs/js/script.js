@@ -13,7 +13,7 @@ function makeGraph(titleText, seriesData) {
             text: titleText,
             style: {
                 color: '#3E576F',
-                fontSize: '16px',
+                fontSize: '24px',
                 fontWeight: 'bold'
             }
         },

@@ -56,13 +56,13 @@ function makeGraph(titleText, seriesData) {
         },
         series: [{
             title: titleText,
-            data: seriesData,
-            tooltip: {
-                formatter: function() {
-                    return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
-                }
+            data: seriesData
+        }],
+        tooltip: {
+            formatter: function() {
+                return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
             }
-        }]
+        }
     });
     $(".highcharts-container text:contains('Highcharts')").remove();
 }

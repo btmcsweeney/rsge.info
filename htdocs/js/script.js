@@ -3,14 +3,10 @@ var graph, curGraph = 0,
     savedGraphs;
 var items = [];
 
-
-// ????
-
 function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
-            //type: 'spline',
             reflow: false,
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
@@ -48,12 +44,11 @@ function makeGraph(titleText, seriesData) {
             selected: 1
         },
         xAxis: {
-            //type: 'datetime',
             dateTimeLabelFormats: {
                 month: '%e. %b',
                 year: '%b'
             },
-            //maxPadding: 0.03
+            maxPadding: 0.03
         },
         yAxis: {
             title: 'Price'

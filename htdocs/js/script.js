@@ -207,6 +207,8 @@ $(function() {
     
     $(window).resize(function() {
         setHeight();
+    }).on('hashchange', function() {
+       graphItem(window.location.hash.substr(1));
     });
     
     if (window.location.hash) {

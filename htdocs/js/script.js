@@ -3,7 +3,7 @@ var graph, curGraph = 0,
     savedGraphs;
 var items = [];
 
-function makeGraph(title) {
+function makeGraph(title, seriesData) {
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
@@ -60,10 +60,7 @@ function makeGraph(title) {
                 return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
             }
         },*/
-        series: [{
-            name: '',
-            data: [0,0]
-        }]
+        series: seriesData
     });
     $(".highcharts-container text:contains('Highcharts')").remove();
 }
@@ -96,9 +93,9 @@ function setHeight() {
 
 function graphItem(id, minTime) {
     curGraph = id;
-    while (graph.series.length) {
+    /*while (graph.series.length) {
         graph.series[0].remove(false);
-    }
+    }*/
     $.post('ajax/getprices.ajax.php', { "id": id, "mintime": minTime }, function(result) {
         if (result !== "") {
             var series = {
@@ -118,10 +115,7 @@ function graphItem(id, minTime) {
                     series.data.push(point);
                 }
             });
-            if (graph === null) {
-                makeGraph(graphName);
-            }
-            graph.addSeries(series);
+            makeGraph(graphName, series);
             $('#graphItemInput').val('');
             if ($('.savedGraphButton[value=' + id + ']').length > 0) {
                 $('#saveGraphButton').html('Unsave');
@@ -185,7 +179,7 @@ function saveGraph(id) {
 }
 
 function loadGraphMode() {
-    makeGraph(null);
+    //makeGraph(null);
     $('.chzn-select').chosen();
     $('#timeRangeSelect_chzn').addClass("hidden").css('width', '88px').children('.chzn-drop').css('width', '86px');
     $('.itemSearch').autocomplete({

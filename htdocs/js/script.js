@@ -4,7 +4,7 @@ var graph, curGraph = 0,
 var items = [];
 
 function makeGraph(title, seriesData) {
-    alert(seriesData);
+    console.log(seriesData);
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
@@ -113,7 +113,6 @@ function graphItem(id, minTime) {
                     $.each(points, function(pointNum, pointVal) {
                         point.push(pointVal * 1);
                     });
-                    console.log(point);
                     series.data.push(point);
                 }
             });

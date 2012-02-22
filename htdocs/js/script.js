@@ -1,6 +1,5 @@
 var graph, curGraph = 0,
     graphName, savedGraphs;
-var items = [];
 
 function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
@@ -188,8 +187,7 @@ $(function() {
         delay: 200,
         select: function(event, ui) {
             $.post('ajax/searchcount.ajax.php', { "id": ui.item.id });
-            graphItem(ui.item.id, $('#timeRangeSelect').val() * 60 * 60 * 24);
-            items.push(ui.item.id);
+            window.location = '#' + ui.item.id;
         }
     }).data('autocomplete')._renderItem = function(ul, item) {
         return $('<li></li>').data('item.autocomplete', item).append('<a><span class="asPrice">' + item.label + '</span></a><hr>').appendTo(ul);

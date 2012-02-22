@@ -112,6 +112,7 @@ function graphItem(id, minTime) {
                     $.each(points, function(pointNum, pointVal) {
                         point.push(pointVal * 1);
                     });
+                    console.log(point);
                     series.data.push(point);
                 }
             });

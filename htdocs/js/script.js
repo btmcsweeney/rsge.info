@@ -2,13 +2,12 @@ var graph, curGraph = 0,
     graphName, mode = 'main',
     savedGraphs;
 var items = [];
-var d = new Date;
 
 function makeGraph(titleText, seriesData) {
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
-            reflow: false,
+            //reflow: false,
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
         title: {
@@ -48,9 +47,7 @@ function makeGraph(titleText, seriesData) {
             dateTimeLabelFormats: {
                 month: '%e. %b',
                 year: '%b'
-            },
-            endOnTick: false,
-            max: d.getTime() + 1000*60*60*24
+            }
         },
         yAxis: {
             title: 'Price'
@@ -95,7 +92,7 @@ function setHeight() {
     var mainHeight = $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight();
     $('#main-container').height(mainHeight);
     $('aside').height($(window).height() - $('header').outerHeight() - $('nav').outerHeight());
-    if (graph) { graph.setSize($(window).width() - 144, mainHeight - $('.inner-header').outerHeight()); }
+    if (graph) { graph.setSize($(window).width() - 154, mainHeight - $('.inner-header').outerHeight()); }
 }
 
 function graphItem(id, minTime) {
@@ -123,6 +120,7 @@ function graphItem(id, minTime) {
                 }
             });
             makeGraph(graphName, series.data);
+            
             $('#graphItemInput').val('');
             if ($('.savedGraphButton[value=' + id + ']').length > 0) {
                 $('#saveGraphButton').html('Unsave');

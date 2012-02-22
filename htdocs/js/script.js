@@ -60,8 +60,11 @@ function makeGraph(titleText, seriesData) {
         }],
         tooltip: {
             formatter: function() {
-                console.log(this.y + ' ||| ' + addCommas(this.y));
-                return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
+                var s = Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>';
+                $.each(this.points, function(i, point) {
+                    s+= addCommas(point.y) + ' gp';
+                });
+                return s;
             }
         }
     });

@@ -36,6 +36,9 @@ function makeGraph(titleText, seriesData) {
                     text: '6m'
                 }
             ],
+            inputBoxStyle: {
+                display: 'none'
+            },
             selected: 1
         },
         xAxis: {

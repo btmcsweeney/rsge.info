@@ -1,8 +1,8 @@
 <?php require_once "inc/functions.inc.php"; ?>
 <div class="inner-header">
     <form method="post" id="graphItem">
-    <input type="text" name="id" id="graphItemInput" class="itemSearch">
-    <input type="submit" value="Graph Item" id="graphItemSubmit">
+    <input type="text" name="id" id="graphItemInput" class="itemSearch" placeholder="Start typing an item name...">
+    <!-- <input type="submit" value="Graph Item" id="graphItemSubmit"> -->
     </form>
     <select class="chzn-select hidden" id="timeRangeSelect">
 	    <option value="14">14 Days</option>

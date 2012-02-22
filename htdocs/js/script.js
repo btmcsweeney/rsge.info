@@ -48,6 +48,7 @@ function makeGraph(titleText, seriesData) {
                 month: '%e. %b',
                 year: '%b'
             },
+            endOnTick: false,
             maxPadding: 0.03
         },
         yAxis: {

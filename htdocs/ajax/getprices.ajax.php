@@ -2,11 +2,7 @@
 require_once "../inc/functions.inc.php";
 if (isset($_REQUEST['id'])) {
     $id=clean_int($_REQUEST['id']);
-    if (isset($_REQUEST['mintime'])) {
-	$mintime=(time()-clean_int($_REQUEST['mintime']))*1000;
-    } else {
 	$mintime=time()-180*24*60*60*1000;//180 days
-    }
     if (!($item=$itemsColl->findOne(array("id"=>$id)))) {
 	$page=`sh /var/www/getpage.sh http://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item=$id`;
 	$item=json_decode($page);

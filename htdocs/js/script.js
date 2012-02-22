@@ -10,7 +10,7 @@ function makeGraph(titleText, seriesData) {
         chart: {
             renderTo: 'graph',
             //type: 'spline',
-            reflow: false,
+            //reflow: false,
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },
         title: {

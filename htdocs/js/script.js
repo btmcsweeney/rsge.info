@@ -115,6 +115,7 @@ function graphItem(id, minTime) {
                     });
                     series.data.push(point);
                 }
+                console.log(series.data);
             });
             makeGraph(graphName, series);
             $('#graphItemInput').val('');

@@ -60,6 +60,7 @@ function makeGraph(titleText, seriesData) {
         }],
         tooltip: {
             formatter: function() {
+                console.log(this.y + ' ||| ' + addCommas(this.y));
                 return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
             }
         }

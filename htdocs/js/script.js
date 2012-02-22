@@ -7,7 +7,7 @@ function makeGraph(title) {
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',
-            //type: 'spline',
+            type: 'spline',
             reflow: false,
             height: $(window).height() - $('header').outerHeight() - $('footer').outerHeight() - $('#top-ad').outerHeight() - $('nav').outerHeight() - $('.inner-header').outerHeight()
         },

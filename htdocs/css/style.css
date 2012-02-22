@@ -232,8 +232,7 @@ button, input[type=button], input[type=submit] {
     background: #ccc;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee)); background-image: -webkit-linear-gradient(center bottom, #ccc 0%, #eee 60%); background-image: -moz-linear-gradient(center bottom, #ccc 0%, #eee 60%); background-image: -o-linear-gradient(bottom, #ccc 0%, #eee 60%); background-image: -ms-linear-gradient(top, #cccccc 0%,#eeeeee 60%); background-image: linear-gradient(top, #cccccc 0%,#eeeeee 60%);
     border: 1px solid #aaa;
-    height: 28px;
-    padding: 0 6px;
+    padding: 5px 6px;
 }
 #saveGraphButton { vertical-align: top; }
 

@@ -4,6 +4,7 @@ var graph, curGraph = 0,
 var items = [];
 
 function makeGraph(title, seriesData) {
+    alert(seriesData);
     graph = new Highcharts.StockChart({
         chart: {
             renderTo: 'graph',

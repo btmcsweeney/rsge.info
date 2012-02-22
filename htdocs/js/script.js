@@ -202,7 +202,7 @@ $(function() {
     $('input[placeholder], textarea[placeholder]').placeholder();
 
     $('.savedGraphButton').click(function() {
-        graphItem($(this).val(), $('#timeRangeSelect').val() * 60 * 60 * 24);
+        window.location = '#' + $(this).val();
     });
     
     $(window).resize(function() {

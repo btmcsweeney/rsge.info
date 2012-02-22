@@ -61,7 +61,10 @@ function makeGraph(title, seriesData) {
                 return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
             }
         },*/
-        series: seriesData
+        series: [{
+            title: title,
+            data: seriesData
+        }]
     });
     $(".highcharts-container text:contains('Highcharts')").remove();
 }
@@ -115,9 +118,8 @@ function graphItem(id, minTime) {
                     });
                     series.data.push(point);
                 }
-                console.log(series.data);
             });
-            makeGraph(graphName, series);
+            makeGraph(graphName, series.data);
             $('#graphItemInput').val('');
             if ($('.savedGraphButton[value=' + id + ']').length > 0) {
                 $('#saveGraphButton').html('Unsave');

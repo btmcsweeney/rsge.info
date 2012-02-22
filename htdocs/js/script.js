@@ -95,12 +95,12 @@ function setHeight() {
     if (graph) { graph.setSize($(window).width() - 166, mainHeight - $('.inner-header').outerHeight()); }
 }
 
-function graphItem(id, minTime) {
+function graphItem(id) {
     curGraph = id;
     $('#graph').html('<img src="img/loader.gif">');
     graph = null;
     $('#saveGraphButton').addClass("hidden");
-    $.post('ajax/getprices.ajax.php', { "id": id, "mintime": minTime }, function(result) {
+    $.post('ajax/getprices.ajax.php', { "id": id }, function(result) {
         if (result !== "") {
             var series = {
                 data: []
@@ -198,10 +198,6 @@ $(function() {
     $('#graphItem').submit(function(event) {
         event.preventDefault();
     });
-
-    $('#saveGraphButton').click(function() {
-        saveGraph(curGraph);
-    });
     
     $('input[placeholder], textarea[placeholder]').placeholder();
 
@@ -212,6 +208,8 @@ $(function() {
     $(window).resize(function() {
         setHeight();
     });
+    
+    if (window.location.hash) { 
     
     checkForUpdate();
 });

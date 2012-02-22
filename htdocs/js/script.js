@@ -55,6 +55,10 @@ function makeGraph(titleText, seriesData) {
         },
         series: [{
             title: titleText,
+            marker: {
+                enabled: true,
+                radius: 4
+            },
             data: seriesData
         }],
         tooltip: {

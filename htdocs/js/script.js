@@ -209,7 +209,9 @@ $(function() {
         setHeight();
     });
     
-    if (window.location.hash) { 
+    if (window.location.hash) {
+        graphItem(window.location.hash.substr(1));
+    }
     
     checkForUpdate();
 });

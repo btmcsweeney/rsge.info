@@ -1,6 +1,5 @@
 var graph, curGraph = 0,
-    graphName, mode = 'main',
-    savedGraphs;
+    graphName, savedGraphs;
 var items = [];
 
 function makeGraph(titleText, seriesData) {
@@ -32,10 +31,6 @@ function makeGraph(titleText, seriesData) {
                     type: 'month',
                     count: 3,
                     text: '3m'
-                }, {
-                    type: 'month',
-                    count: 4,
-                    text: '4m'
                 }, {
                     type: 'month',
                     count: 6,
@@ -102,9 +97,9 @@ function setHeight() {
 
 function graphItem(id, minTime) {
     curGraph = id;
-    /*while (graph.series.length) {
-        graph.series[0].remove(false);
-    }*/
+    $('#graph').html('<img src="img/loader.gif">');
+    graph = null;
+    $('#saveGraphButton').addClass("hidden");
     $.post('ajax/getprices.ajax.php', { "id": id, "mintime": minTime }, function(result) {
         if (result !== "") {
             var series = {
@@ -133,15 +128,8 @@ function graphItem(id, minTime) {
                 $('#saveGraphButton').html('Save');
             }
             $('#saveGraphButton').removeClass("hidden");
-            //$('#timeRangeSelect').removeClass("hidden");
-            $('#timeRangeSelect_chzn').removeClass("hidden");
         }
     });
-    $('#graph').html('<img src="img/loader.gif">');
-    graph = null;
-    $('#saveGraphButton').addClass("hidden");
-    //$('#timeRangeSelect').addClass("hidden");
-    $('#timeRangeSelect_chzn').addClass("hidden");
 }
 
 function getSavedGraphs() {
@@ -188,10 +176,11 @@ function saveGraph(id) {
     }
 }
 
-function loadGraphMode() {
-    //makeGraph(null);
-    $('.chzn-select').chosen();
-    $('#timeRangeSelect_chzn').addClass("hidden").css('width', '88px').children('.chzn-drop').css('width', '86px');
+//Call on load
+$(function() {
+    setHeight();
+    getSavedGraphs();
+    
     $('.itemSearch').autocomplete({
         source: 'ajax/itemsearch.ajax.php',
         minLength: 2,
@@ -209,44 +198,10 @@ function loadGraphMode() {
         event.preventDefault();
     });
 
-    $('#removeItemSelect').change(function(event, ui) {
-        var seriesNum = $('#removeItemSelect').val();
-        items.splice(seriesNum, 1);
-        graph.series[seriesNum].remove();
-        var newOptions = '<option value=""></option>';
-        for (var x in graph.series) {
-            newOptions += '<option value="' + x + '">' + graph.series[x].name + '</option>';
-        }
-        $('#removeItemSelect').empty().html(newOptions).trigger('liszt:updated');
-    });
-
-    $('#timeRangeSelect').change(function(event, ui) {
-        var seconds = $('#timeRangeSelect').val() * 60 * 60 * 24;
-        while (graph.series.length) {
-            graph.series[0].remove(false);
-        }
-        $('#removeItemSelect').empty().html('<option value=""></option>').trigger('liszt:updated');
-        graphItem(curGraph, seconds);
-        graph.redraw();
-    });
-
     $('#saveGraphButton').click(function() {
         saveGraph(curGraph);
     });
-
-    $('#deleteGraphButton').click(function() {
-        deleteGraph(curGraph);
-    });
-    mode = 'graph';
-}
-
-
-//Call on load
-$(function() {
-    loadGraphMode();
-    setHeight();
-    getSavedGraphs();
-    checkForUpdate();
+    
     $('input[placeholder], textarea[placeholder]').placeholder();
 
     $('.savedGraphButton').click(function() {
@@ -256,4 +211,6 @@ $(function() {
     $(window).resize(function() {
         setHeight();
     });
+    
+    checkForUpdate();
 });

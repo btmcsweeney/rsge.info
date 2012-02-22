@@ -204,6 +204,10 @@ $(function() {
         window.location = '#' + $(this).val();
     });
     
+    $('#saveGraphButton').click(function() {
+        saveGraph(curGraph);
+    });
+    
     $(window).resize(function() {
         setHeight();
     }).on('hashchange', function() {

@@ -55,11 +55,11 @@ function makeGraph(title) {
         yAxis: {
             title: 'Price'
         },
-        tooltip: {
+        /*tooltip: {
             formatter: function() {
                 return Highcharts.dateFormat('%A, %b. %e', this.x) + '<br/>' + addCommas(this.y) + ' gp';
             }
-        }
+        }*/
     });
     $(".highcharts-container text:contains('Highcharts')").remove();
 }

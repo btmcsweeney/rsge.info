@@ -127,6 +127,7 @@ function graphItem(id) {
                 $('#saveGraphButton').html('Save');
             }
             $('#saveGraphButton').removeClass("hidden");
+            $('#graphItemInput').blur();
             window.location = '#' + id;
         }
     });
